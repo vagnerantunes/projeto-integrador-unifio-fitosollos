@@ -20,7 +20,7 @@ public class CulturaService {
 		
 	}
 	
-	public Cultura findById(Long id) {
+	public Cultura findById(Integer id) {
 		Optional<Cultura> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class CulturaService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Cultura update(Long id, Cultura obj) {
+	public Cultura update(Integer id, Cultura obj) {
 		Cultura entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

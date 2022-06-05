@@ -9,9 +9,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class ResultadoAnalise implements Serializable {
 
@@ -19,7 +27,7 @@ public class ResultadoAnalise implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private Double qtdSolo;
 
@@ -34,18 +42,5 @@ public class ResultadoAnalise implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "amostra")
 	private Amostra amostra;
-	
-	public ResultadoAnalise() {		
-	}
-
-	public ResultadoAnalise(Long id, Double qtdSolo, Double qtdRaiz, Double qtdOvos, Nematoide nematoide,
-			Amostra amostra) {
-		this.id = id;
-		this.qtdSolo = qtdSolo;
-		this.qtdRaiz = qtdRaiz;
-		this.qtdOvos = qtdOvos;
-		this.nematoide = nematoide;
-		this.amostra = amostra;
-	}
 
 }

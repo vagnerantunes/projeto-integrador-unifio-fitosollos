@@ -10,9 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Recebimento implements Serializable {
 
@@ -20,7 +28,7 @@ public class Recebimento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private Double valor;
 
@@ -33,18 +41,5 @@ public class Recebimento implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "amostra")
 	private Amostra amostra;
-	
-	public Recebimento() {		
-	}
-
-	public Recebimento(Long id, Double valor, Instant horario, FormaPagamento formaPagamento,
-			Amostra amostra) {
-		this.id = id;
-		this.valor = valor;
-		this.horario = horario;
-		this.formaPagamento = formaPagamento;
-		this.amostra = amostra;
-		
-	}
 	
 }

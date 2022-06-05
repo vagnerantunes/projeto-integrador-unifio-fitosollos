@@ -20,7 +20,7 @@ public class ProprietarioService {
 		
 	}
 	
-	public Proprietario findById(Long id) {
+	public Proprietario findById(Integer id) {
 		Optional<Proprietario> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class ProprietarioService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Proprietario update(Long id, Proprietario obj) {
+	public Proprietario update(Integer id, Proprietario obj) {
 		Proprietario entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

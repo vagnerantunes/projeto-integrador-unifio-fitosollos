@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Crq;
 import projeto.fitosollos.services.CrqService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/crqs")
 public class CrqResource {
@@ -32,7 +32,7 @@ public class CrqResource {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Crq> findById(@PathVariable Long id) {
+	public ResponseEntity<Crq> findById(@PathVariable Integer id) {
 		Crq obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,13 +44,13 @@ public class CrqResource {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Crq> update(@PathVariable Long id, @RequestBody Crq obj) {
+	public ResponseEntity<Crq> update(@PathVariable Integer id, @RequestBody Crq obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);		
 	}

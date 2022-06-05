@@ -20,7 +20,7 @@ public class TipoAnaliseService {
 		
 	}
 	
-	public TipoAnalise findById(Long id) {
+	public TipoAnalise findById(Integer id) {
 		Optional<TipoAnalise> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class TipoAnaliseService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public TipoAnalise update(Long id, TipoAnalise obj) {
+	public TipoAnalise update(Integer id, TipoAnalise obj) {
 		TipoAnalise entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

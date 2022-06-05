@@ -1,6 +1,7 @@
 package projeto.fitosollos.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,36 +21,22 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ResponsavelTecnico implements Serializable {
+public class TabelaPreco implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
-	private String nome;
-
-	private String ddd;
-
-	private String telefone;
-
-	private String cidade;
-
-	private String uf;
+	private Double valor;
 	
-	private String endereco;
-	
-	private String bairro;
-	
-	private String cep;
-
 	@ManyToOne
-	@JoinColumn(name = "crq")
-	private Crq crq;
+	@JoinColumn(name = "analise")
+	private TipoAnalise analise;
 	
 	@ManyToOne
 	@JoinColumn(name = "laboratorio")
 	private Laboratorio laboratorio;
-	
+
 }

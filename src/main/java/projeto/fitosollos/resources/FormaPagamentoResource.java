@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.FormaPagamento;
 import projeto.fitosollos.services.FormaPagamentoService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/fpagamentos")
 public class FormaPagamentoResource {
@@ -32,7 +32,7 @@ public class FormaPagamentoResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<FormaPagamento> findById(@PathVariable Long id){
+	public ResponseEntity<FormaPagamento> findById(@PathVariable Integer id){
 		FormaPagamento obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,14 +44,14 @@ public class FormaPagamentoResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<FormaPagamento> update(@PathVariable Long id, @RequestBody FormaPagamento obj){
+	public ResponseEntity<FormaPagamento> update(@PathVariable Integer id, @RequestBody FormaPagamento obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 		

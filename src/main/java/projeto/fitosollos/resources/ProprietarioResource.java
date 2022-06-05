@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Proprietario;
 import projeto.fitosollos.services.ProprietarioService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/proprietarios")
 public class ProprietarioResource {
@@ -32,7 +32,7 @@ public class ProprietarioResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Proprietario> findById(@PathVariable Long id){
+	public ResponseEntity<Proprietario> findById(@PathVariable Integer id){
 		Proprietario obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,14 +44,14 @@ public class ProprietarioResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Proprietario> update(@PathVariable Long id, @RequestBody Proprietario obj){
+	public ResponseEntity<Proprietario> update(@PathVariable Integer id, @RequestBody Proprietario obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 		

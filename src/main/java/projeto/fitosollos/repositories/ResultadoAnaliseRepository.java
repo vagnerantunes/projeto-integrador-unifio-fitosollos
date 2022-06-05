@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.ResultadoAnalise;
 
 @Repository
-public interface ResultadoAnaliseRepository extends JpaRepository<ResultadoAnalise, Long> {
+public interface ResultadoAnaliseRepository extends JpaRepository<ResultadoAnalise, Integer> {
 
 }

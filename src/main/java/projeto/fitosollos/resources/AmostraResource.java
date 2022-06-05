@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Amostra;
 import projeto.fitosollos.services.AmostraService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/amostras")
 public class AmostraResource {
@@ -32,7 +32,7 @@ public class AmostraResource {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Amostra> findById(@PathVariable Long id) {
+	public ResponseEntity<Amostra> findById(@PathVariable Integer id) {
 		Amostra obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,13 +44,13 @@ public class AmostraResource {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Amostra> update(@PathVariable Long id, @RequestBody Amostra obj) {
+	public ResponseEntity<Amostra> update(@PathVariable Integer id, @RequestBody Amostra obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);		
 	}

@@ -25,7 +25,7 @@ public class ResponsavelTecnicoService {
 		return repository.findAll();
 	}
 
-	public ResponsavelTecnico findById(Long id) {
+	public ResponsavelTecnico findById(Integer id) {
 		Optional<ResponsavelTecnico> obj = repository.findById(id);
 		return obj.get();
 
@@ -39,12 +39,12 @@ public class ResponsavelTecnicoService {
 		return obj;
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public ResponsavelTecnico update(Long id, ResponsavelTecnico obj) {
+	public ResponsavelTecnico update(Integer id, ResponsavelTecnico obj) {
 		ResponsavelTecnico entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

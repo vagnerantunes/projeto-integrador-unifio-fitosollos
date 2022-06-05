@@ -10,9 +10,17 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Amostra implements Serializable {
 
@@ -20,7 +28,7 @@ public class Amostra implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private String descricao;
 
@@ -58,26 +66,5 @@ public class Amostra implements Serializable {
 	@JoinColumn(name = "laboratorio")
 	private Laboratorio laboratorio;
 	
-	public Amostra() {		
-	}
-
-	public Amostra(Long id, String descricao, Instant chegada, Instant saida, Double peso, String finalizada,
-			String cancelada, Usuario usuario, TipoAnalise analise, Cultura cultura, Proprietario proprietario,
-			ResponsavelTecnico tecnico, Laboratorio laboratorio) {
-		super();
-		this.id = id;
-		this.descricao = descricao;
-		this.chegada = chegada;
-		this.saida = saida;
-		this.peso = peso;
-		this.finalizada = finalizada;
-		this.cancelada = cancelada;
-		this.usuario = usuario;
-		this.analise = analise;
-		this.cultura = cultura;
-		this.proprietario = proprietario;
-		this.tecnico = tecnico;
-		this.laboratorio = laboratorio;
-	}
 	
 }

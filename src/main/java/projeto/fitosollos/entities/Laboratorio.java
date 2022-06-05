@@ -6,9 +6,18 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import lombok.Data;
 
-@Data
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Laboratorio implements Serializable {
 
@@ -16,20 +25,10 @@ public class Laboratorio implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 
 	private String cnpj;
 	private String endereco;
 	private String telefone;
 
-	public Laboratorio() {
-	}
-
-	public Laboratorio(Long id, String cnpj, String endereco, String telefone) {
-		this.id = id;
-		this.cnpj = cnpj;
-		this.endereco = endereco;
-		this.telefone = telefone;
-	}
-	
 }

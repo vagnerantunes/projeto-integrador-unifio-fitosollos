@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.Proprietario;
 
 @Repository
-public interface ProprietarioRepository extends JpaRepository<Proprietario, Long>{
+public interface ProprietarioRepository extends JpaRepository<Proprietario, Integer>{
 
 }

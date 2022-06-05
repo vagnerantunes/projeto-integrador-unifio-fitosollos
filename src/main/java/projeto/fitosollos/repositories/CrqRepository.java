@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.Crq;
 
 @Repository
-public interface CrqRepository extends JpaRepository<Crq, Long> {
+public interface CrqRepository extends JpaRepository<Crq, Integer> {
 
 }

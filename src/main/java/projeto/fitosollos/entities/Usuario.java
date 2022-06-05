@@ -7,9 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Usuario implements Serializable{
 
@@ -17,19 +25,8 @@ public class Usuario implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String email;
 	private String senha;
-	
-	public Usuario() {
-		
-	}
-
-	public Usuario(Long id, String email, String senha) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.senha = senha;
-	}
 
 }

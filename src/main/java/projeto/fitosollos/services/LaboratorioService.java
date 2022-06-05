@@ -20,7 +20,7 @@ public class LaboratorioService {
 		
 	}
 	
-	public Laboratorio findById(Long id) {
+	public Laboratorio findById(Integer id) {
 		Optional<Laboratorio> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class LaboratorioService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Laboratorio update(Long id, Laboratorio obj) {
+	public Laboratorio update(Integer id, Laboratorio obj) {
 		Laboratorio entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

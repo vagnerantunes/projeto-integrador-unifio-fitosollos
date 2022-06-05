@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Cultura;
 import projeto.fitosollos.services.CulturaService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/culturas")
 public class CulturaResource {
@@ -32,7 +32,7 @@ public class CulturaResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Cultura> findById(@PathVariable Long id){
+	public ResponseEntity<Cultura> findById(@PathVariable Integer id){
 		Cultura obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,14 +44,14 @@ public class CulturaResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Cultura> update(@PathVariable Long id, @RequestBody Cultura obj){
+	public ResponseEntity<Cultura> update(@PathVariable Integer id, @RequestBody Cultura obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);		
 	}

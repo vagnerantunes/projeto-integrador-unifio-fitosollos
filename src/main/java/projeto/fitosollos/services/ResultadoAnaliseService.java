@@ -25,7 +25,7 @@ public class ResultadoAnaliseService {
 		return repository.findAll();
 	}
 
-	public ResultadoAnalise findById(Long id) {
+	public ResultadoAnalise findById(Integer id) {
 		Optional<ResultadoAnalise> obj = repository.findById(id);
 		return obj.get();
 
@@ -39,12 +39,12 @@ public class ResultadoAnaliseService {
 		return obj;
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public ResultadoAnalise update(Long id, ResultadoAnalise obj) {
+	public ResultadoAnalise update(Integer id, ResultadoAnalise obj) {
 		ResultadoAnalise entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

@@ -26,7 +26,7 @@ public class RecebimentoService {
 		return repository.findAll();
 	}
 
-	public Recebimento findById(Long id) {
+	public Recebimento findById(Integer id) {
 		Optional<Recebimento> obj = repository.findById(id);
 		return obj.get();
 	}
@@ -39,12 +39,12 @@ public class RecebimentoService {
 		return obj;
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public Recebimento update(Long id, Recebimento obj) {
+	public Recebimento update(Integer id, Recebimento obj) {
 		Recebimento entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.Recebimento;
 
 @Repository
-public interface RecebimentoRepository extends JpaRepository<Recebimento, Long> {
+public interface RecebimentoRepository extends JpaRepository<Recebimento, Integer> {
 
 	
 }

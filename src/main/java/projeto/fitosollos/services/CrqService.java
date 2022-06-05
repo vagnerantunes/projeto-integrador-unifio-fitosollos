@@ -20,7 +20,7 @@ public class CrqService {
 		return repository.findAll();
 	}
 
-	public Crq findById(Long id) {
+	public Crq findById(Integer id) {
 		Optional<Crq> obj = repository.findById(id);
 		return obj.get();
 	}
@@ -30,15 +30,16 @@ public class CrqService {
 		return repository.save(obj);
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public Crq update(Long id, Crq obj) {
+	public Crq update(Integer id, Crq obj) {
 		Crq entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);
+		
 	}
 
 	private void updateData(Crq entity, Crq obj) {

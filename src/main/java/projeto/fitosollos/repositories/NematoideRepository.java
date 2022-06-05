@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.Nematoide;
 
 @Repository
-public interface NematoideRepository extends JpaRepository<Nematoide, Long> {
+public interface NematoideRepository extends JpaRepository<Nematoide, Integer> {
 
 }

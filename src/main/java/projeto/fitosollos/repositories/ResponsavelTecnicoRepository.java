@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.ResponsavelTecnico;
 
 @Repository
-public interface ResponsavelTecnicoRepository extends JpaRepository<ResponsavelTecnico, Long> {
+public interface ResponsavelTecnicoRepository extends JpaRepository<ResponsavelTecnico, Integer> {
 
 }

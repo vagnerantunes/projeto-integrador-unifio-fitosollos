@@ -7,9 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Crq implements Serializable{
 	
@@ -17,17 +25,7 @@ public class Crq implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
-	private String descricao;
-	
-	public Crq() {
-	}
-
-	public Crq(Long id, String descricao) {
-		this.id = id;
-		this.descricao = descricao;
-	}
-	
-	
+	private Integer id;
+	private String descricao;		
 	
 }

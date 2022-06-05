@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.ResponsavelTecnico;
 import projeto.fitosollos.services.ResponsavelTecnicoService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/tecnicos")
 public class ResponsavelTecnicoResource {
@@ -32,10 +32,9 @@ public class ResponsavelTecnicoResource {
 	}
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ResponsavelTecnico> findById(@PathVariable Long id) {
+	public ResponseEntity<ResponsavelTecnico> findById(@PathVariable Integer id) {
 		ResponsavelTecnico obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
-
 	}
 
 	@PostMapping
@@ -45,13 +44,13 @@ public class ResponsavelTecnicoResource {
 	}
 
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<ResponsavelTecnico> update(@PathVariable Long id, @RequestBody ResponsavelTecnico obj) {
+	public ResponseEntity<ResponsavelTecnico> update(@PathVariable Integer id, @RequestBody ResponsavelTecnico obj) {
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);		
 	}

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.Laboratorio;
 
 @Repository
-public interface LaboratorioRepository extends JpaRepository<Laboratorio, Long> {
+public interface LaboratorioRepository extends JpaRepository<Laboratorio, Integer> {
 	
 }

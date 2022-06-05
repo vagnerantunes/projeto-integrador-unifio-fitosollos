@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.TipoAnalise;
 import projeto.fitosollos.services.TipoAnaliseService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/analises")
 public class TipoAnaliseResource {
@@ -32,7 +32,7 @@ public class TipoAnaliseResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<TipoAnalise> findById(@PathVariable Long id){
+	public ResponseEntity<TipoAnalise> findById(@PathVariable Integer id){
 		TipoAnalise obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 		
@@ -45,14 +45,14 @@ public class TipoAnaliseResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<TipoAnalise> update(@PathVariable Long id, 
+	public ResponseEntity<TipoAnalise> update(@PathVariable Integer id, 
 			@RequestBody TipoAnalise obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);

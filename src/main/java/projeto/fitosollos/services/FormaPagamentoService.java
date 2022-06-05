@@ -20,7 +20,7 @@ public class FormaPagamentoService {
 		
 	}
 	
-	public FormaPagamento findById(Long id) {
+	public FormaPagamento findById(Integer id) {
 		Optional<FormaPagamento> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class FormaPagamentoService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public FormaPagamento update(Long id, FormaPagamento obj) {
+	public FormaPagamento update(Integer id, FormaPagamento obj) {
 		FormaPagamento entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Nematoide;
 import projeto.fitosollos.services.NematoideService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/nematoides")
 public class NematoideResource {
@@ -32,7 +32,7 @@ public class NematoideResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Nematoide> findById(@PathVariable Long id){
+	public ResponseEntity<Nematoide> findById(@PathVariable Integer id){
 		Nematoide obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,14 +44,14 @@ public class NematoideResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Nematoide> update(@PathVariable Long id, @RequestBody Nematoide obj){
+	public ResponseEntity<Nematoide> update(@PathVariable Integer id, @RequestBody Nematoide obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);
 		

@@ -20,7 +20,7 @@ public class NematoideService {
 		return repository.findAll();
 	}
 
-	public Nematoide findById(Long id) {
+	public Nematoide findById(Integer id) {
 		Optional<Nematoide> obj = repository.findById(id);
 		return obj.get();
 
@@ -31,12 +31,12 @@ public class NematoideService {
 		return repository.save(obj);
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public Nematoide update(Long id, Nematoide obj) {
+	public Nematoide update(Integer id, Nematoide obj) {
 		Nematoide entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

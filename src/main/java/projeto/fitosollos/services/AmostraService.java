@@ -37,7 +37,7 @@ public class AmostraService {
 		return repository.findAll();
 	}
 
-	public Amostra findById(Long id) {
+	public Amostra findById(Integer id) {
 		Optional<Amostra> obj = repository.findById(id);
 		return obj.get();
 
@@ -55,12 +55,12 @@ public class AmostraService {
 		return obj;
 	}
 
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 
 	@SuppressWarnings("deprecation")
-	public Amostra update(Long id, Amostra obj) {
+	public Amostra update(Integer id, Amostra obj) {
 		Amostra entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);

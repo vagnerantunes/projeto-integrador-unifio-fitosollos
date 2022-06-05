@@ -7,9 +7,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Cultura implements Serializable{
 	
@@ -17,17 +25,7 @@ public class Cultura implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Integer id;
 	private String descricao;
-	
-	public Cultura() {
-	}
-
-	public Cultura(Long id, String descricao) {
-		this.id = id;
-		this.descricao = descricao;
-	}
-	
-	
 	
 }

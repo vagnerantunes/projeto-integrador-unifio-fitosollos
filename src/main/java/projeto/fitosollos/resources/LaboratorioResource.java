@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import projeto.fitosollos.entities.Laboratorio;
 import projeto.fitosollos.services.LaboratorioService;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping(value = "/laboratorios")
 public class LaboratorioResource {
@@ -32,7 +32,7 @@ public class LaboratorioResource {
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Laboratorio> findById(@PathVariable Long id){
+	public ResponseEntity<Laboratorio> findById(@PathVariable Integer id){
 		Laboratorio obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
@@ -44,14 +44,14 @@ public class LaboratorioResource {
 	}
 	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 		
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Laboratorio> update(@PathVariable Long id, 
+	public ResponseEntity<Laboratorio> update(@PathVariable Integer id, 
 			@RequestBody Laboratorio obj){
 		obj = service.update(id, obj);
 		return ResponseEntity.ok().body(obj);

@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import projeto.fitosollos.entities.FormaPagamento;
 
 @Repository
-public interface FormaPagamentoRepository extends JpaRepository<FormaPagamento, Long>{
+public interface FormaPagamentoRepository extends JpaRepository<FormaPagamento, Integer>{
 
 }

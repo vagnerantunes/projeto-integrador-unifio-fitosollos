@@ -3,10 +3,9 @@ package projeto.fitosollos.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import projeto.fitosollos.entities.Amostra;
+import projeto.fitosollos.entities.TabelaPreco;
 
 @Repository
-public interface AmostraRepository extends JpaRepository<Amostra, Integer> {
+public interface TabelaPrecoRepository extends JpaRepository<TabelaPreco, Integer> {
 
-	
 }

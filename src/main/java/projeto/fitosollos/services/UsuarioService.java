@@ -20,7 +20,7 @@ public class UsuarioService {
 		
 	}
 	
-	public Usuario findById(Long id) {
+	public Usuario findById(Integer id) {
 		Optional<Usuario> obj = repository.findById(id);
 		return obj.get();
 		
@@ -31,12 +31,12 @@ public class UsuarioService {
 		
 	}
 	
-	public void delete(Long id) {
+	public void delete(Integer id) {
 		repository.deleteById(id);
 	}
 	
 	@SuppressWarnings("deprecation")
-	public Usuario update(Long id, Usuario obj) {
+	public Usuario update(Integer id, Usuario obj) {
 		Usuario entity = repository.getOne(id);
 		updateData(entity, obj);
 		return repository.save(entity);
