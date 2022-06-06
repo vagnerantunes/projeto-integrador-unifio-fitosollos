@@ -1,6 +1,9 @@
 package projeto.fitosollos.resources;
 
+import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import projeto.fitosollos.dto.ResponsavelTecnicoDTO;
+import projeto.fitosollos.dto.ResponsavelTecnicoNewDTO;
 import projeto.fitosollos.entities.ResponsavelTecnico;
 import projeto.fitosollos.services.ResponsavelTecnicoService;
 
@@ -24,35 +30,39 @@ public class ResponsavelTecnicoResource {
 
 	@Autowired
 	private ResponsavelTecnicoService service;
-
+	
 	@GetMapping
-	public ResponseEntity<List<ResponsavelTecnico>> findAll() {
+	public ResponseEntity<List<ResponsavelTecnico>> findAll(){
 		List<ResponsavelTecnico> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		return ResponseEntity.ok().body(list);		
 	}
-
+	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ResponsavelTecnico> findById(@PathVariable Integer id) {
+	public ResponseEntity<ResponsavelTecnico> findById(@PathVariable Integer id){
 		ResponsavelTecnico obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 	}
-
+	
 	@PostMapping
-	public ResponseEntity<ResponsavelTecnico> insert(@RequestBody ResponsavelTecnico obj) {
-		obj = service.insert(obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Void> save (@RequestBody @Valid ResponsavelTecnicoNewDTO responsavelTecnicoNewDTO){
+		ResponsavelTecnico responsavelTecnico = service.insert(responsavelTecnicoNewDTO);
+		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(responsavelTecnico.getId()).toUri(); 
+		return ResponseEntity.created(uri).build();
 	}
-
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Void> update (@PathVariable Integer id, @RequestBody @Valid ResponsavelTecnicoDTO responsavelTecnicoDTO){
+		service.update(id, responsavelTecnicoDTO);
+		return ResponseEntity.ok().build();
+	}
+	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
-		return ResponseEntity.noContent().build();
-	}
-
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<ResponsavelTecnico> update(@PathVariable Integer id, @RequestBody ResponsavelTecnico obj) {
-		obj = service.update(id, obj);
-		return ResponseEntity.ok().body(obj);		
+		return ResponseEntity.ok().build();
+		
 	}
 
 }
