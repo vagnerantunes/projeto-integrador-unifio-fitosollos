@@ -3,10 +3,20 @@ package projeto.fitosollos.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import projeto.fitosollos.dto.AmostraDTO;
+import projeto.fitosollos.dto.AmostraNewDTO;
 import projeto.fitosollos.entities.Amostra;
+import projeto.fitosollos.entities.Cultura;
+import projeto.fitosollos.entities.Laboratorio;
+import projeto.fitosollos.entities.Proprietario;
+import projeto.fitosollos.entities.ResponsavelTecnico;
+import projeto.fitosollos.entities.TipoAnalise;
+import projeto.fitosollos.entities.Usuario;
 import projeto.fitosollos.repositories.AmostraRepository;
 
 @Service
@@ -14,71 +24,73 @@ public class AmostraService {
 
 	@Autowired
 	private AmostraRepository repository;
- 
-	@Autowired
-	private UsuarioService usuarioService;
 
-	@Autowired
-	private TipoAnaliseService tipoAnaliseService;
-	
-	@Autowired
-	private CulturaService culturaService;
-	
-	@Autowired
-	private ProprietarioService proprietarioService;
-	
-	@Autowired
-	private ResponsavelTecnicoService responsavelTecnicoService;
-
-	@Autowired
-	private LaboratorioService laboratorioService;
-	
+	//listar todos
 	public List<Amostra> findAll() {
 		return repository.findAll();
 	}
 
+	//listar por id
 	public Amostra findById(Integer id) {
 		Optional<Amostra> obj = repository.findById(id);
 		return obj.get();
-
 	}
-
-	public Amostra insert(Amostra obj) {
-		obj.setId(null);
-		obj.setUsuario(usuarioService.findById(obj.getUsuario().getId()));
-		obj.setAnalise(tipoAnaliseService.findById(obj.getAnalise().getId()));
-		obj.setCultura(culturaService.findById(obj.getCultura().getId()));
-		obj.setProprietario(proprietarioService.findById(obj.getProprietario().getId()));
-		obj.setTecnico(responsavelTecnicoService.findById(obj.getTecnico().getId()));
-		obj.setLaboratorio(laboratorioService.findById(obj.getLaboratorio().getId()));
-		obj = repository.save(obj);
-		return obj;
+	
+	public Amostra insert (AmostraNewDTO amostraNewDTO) {
+		Amostra amostra = fromDTO(amostraNewDTO);
+		repository.save(amostra);
+		return amostra;
 	}
-
+	
 	public void delete(Integer id) {
+		Optional<Amostra> opt = repository.findById(id);
+		
+		opt.orElseThrow(() -> new EntityNotFoundException("Amostra não encontrado!, ID: " + id));
+		
 		repository.deleteById(id);
 	}
-
-	@SuppressWarnings("deprecation")
-	public Amostra update(Integer id, Amostra obj) {
-		Amostra entity = repository.getOne(id);
-		updateData(entity, obj);
-		return repository.save(entity);
+	
+	public void update (Integer id, AmostraDTO amostraDTO) {
+		Amostra amostra = fromDTO(amostraDTO);
+		Optional<Amostra> opt = repository.findById(id);
+		
+		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
+		
+		amostra.setId(id);
+		repository.save(amostra);
 	}
-
-	private void updateData(Amostra entity, Amostra obj) {
-		entity.setDescricao(obj.getDescricao());
-		entity.setChegada(obj.getChegada());
-		entity.setSaida(obj.getSaida());
-		entity.setPeso(obj.getPeso());
-		entity.setFinalizada(obj.getFinalizada());
-		entity.setCancelada(obj.getCancelada());
-		entity.setUsuario(obj.getUsuario());	
-		entity.setAnalise(obj.getAnalise());
-		entity.setCultura(obj.getCultura());
-		entity.setProprietario(obj.getProprietario());
-		entity.setTecnico(obj.getTecnico());
-		entity.setLaboratorio(obj.getLaboratorio());
+	
+	//utilitarios
+	public Amostra fromDTO(AmostraNewDTO amostraNewDTO) {
+		Usuario usuario = new Usuario(amostraNewDTO.getUsuario(), null, null);
+		TipoAnalise tipoAnalise = new TipoAnalise(amostraNewDTO.getAnalise(), null);
+		Cultura cultura = new Cultura(amostraNewDTO.getCultura(), null);
+		Proprietario proprietario = new Proprietario(amostraNewDTO.getProprietario(), null, null, null, null, null, 
+				null, null, null, null);
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraNewDTO.getTecnico(), null, null, null, 
+				null, null, null, null, null, null, null);
+		Laboratorio laboratorio = new Laboratorio(amostraNewDTO.getLaboratorio(), null, null, null);
+		Amostra amostra = new Amostra(null, amostraNewDTO.getDescricao(), amostraNewDTO.getChegada(), 
+				amostraNewDTO.getSaida(), amostraNewDTO.getPeso(), amostraNewDTO.getFinalizada(), 
+				amostraNewDTO.getCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, 
+				laboratorio);
+		return amostra;
 	}
-
+	
+	public Amostra fromDTO(AmostraDTO amostraDTO) {
+		Usuario usuario = new Usuario(amostraDTO.getUsuario(), null, null);
+		TipoAnalise tipoAnalise = new TipoAnalise(amostraDTO.getAnalise(), null);
+		Cultura cultura = new Cultura(amostraDTO.getCultura(), null);
+		Proprietario proprietario = new Proprietario(amostraDTO.getProprietario(), null, null, null, null, null, 
+				null, null, null, null);
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraDTO.getTecnico(), null, null, null, 
+				null, null, null, null, null, null, null);
+		Laboratorio laboratorio = new Laboratorio(amostraDTO.getLaboratorio(), null, null, null);
+		Amostra amostra = new Amostra(null, amostraDTO.getDescricao(), amostraDTO.getChegada(), 
+				amostraDTO.getSaida(), amostraDTO.getPeso(), amostraDTO.getFinalizada(), 
+				amostraDTO.getCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, laboratorio);
+	
+		return amostra;
+	}
+	
 }

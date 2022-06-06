@@ -1,6 +1,9 @@
 package projeto.fitosollos.resources;
 
+import java.net.URI;
 import java.util.List;
+
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -13,7 +16,10 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import projeto.fitosollos.dto.AmostraDTO;
+import projeto.fitosollos.dto.AmostraNewDTO;
 import projeto.fitosollos.entities.Amostra;
 import projeto.fitosollos.services.AmostraService;
 
@@ -24,35 +30,42 @@ public class AmostraResource {
 
 	@Autowired
 	private AmostraService service;
-
+	
 	@GetMapping
-	public ResponseEntity<List<Amostra>> findAll() {
+	public ResponseEntity<List<Amostra>> findAll(){
 		List<Amostra> list = service.findAll();
-		return ResponseEntity.ok().body(list);
+		return ResponseEntity.ok().body(list);		
 	}
-
+	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Amostra> findById(@PathVariable Integer id) {
+	public ResponseEntity<Amostra> findById(@PathVariable Integer id){
 		Amostra obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
+		
 	}
-	 
+	
 	@PostMapping
-	public ResponseEntity<Amostra> insert(@RequestBody Amostra obj) {
-		obj = service.insert(obj);
-		return ResponseEntity.ok().body(obj);
+	public ResponseEntity<Void> save (@RequestBody @Valid AmostraNewDTO amostraNewDTO){
+		Amostra amostra = service.insert(amostraNewDTO);
+		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(amostra.getId()).toUri(); 
+		
+		return ResponseEntity.created(uri).build();
 	}
-
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Void> update (@PathVariable Integer id, @RequestBody @Valid AmostraDTO amostraDTO){
+		service.update(id, amostraDTO);
+		return ResponseEntity.ok().build();
+	}
+	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Integer id) {
+	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().build();
+		
 	}
-
-	@PutMapping(value = "/{id}")
-	public ResponseEntity<Amostra> update(@PathVariable Integer id, @RequestBody Amostra obj) {
-		obj = service.update(id, obj);
-		return ResponseEntity.ok().body(obj);		
-	}
-
+	
+	
 }
