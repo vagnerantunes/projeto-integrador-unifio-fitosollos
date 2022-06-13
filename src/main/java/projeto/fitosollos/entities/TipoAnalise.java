@@ -2,10 +2,12 @@ package projeto.fitosollos.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,8 +27,10 @@ public class TipoAnalise implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	
-	private String descricao;
+	@Column(length = 11, name = "TIP_ID")
+	private Integer tipId;
+	@NotNull
+	@Column(length = 45, name = "TIP_DESCRICAO")
+	private String tipDescricao;
 	
 }

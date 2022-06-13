@@ -15,10 +15,10 @@ public class TabelaPrecoNewDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Double valor;
+	private Double tabValor;
 	
-	private Integer analise;
+	private Integer tabAnalise;
 	
-	private Integer laboratorio;
+	private Integer tabLaboratorio;
 
 }

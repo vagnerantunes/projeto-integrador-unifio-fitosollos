@@ -51,7 +51,7 @@ public class RecebimentoResource {
 		
 		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(recebimento.getId()).toUri(); 
+				.path("/{id}").buildAndExpand(recebimento.getRecId()).toUri(); 
 		
 		return ResponseEntity.created(uri).build();
 	}

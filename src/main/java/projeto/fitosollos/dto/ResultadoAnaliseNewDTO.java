@@ -1,7 +1,6 @@
 package projeto.fitosollos.dto;
 
 import java.io.Serializable;
-import java.time.Instant;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,17 +11,18 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class RecebimentoNewDTO implements Serializable{
+public class ResultadoAnaliseNewDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Double recValor;
+	private Double resQtdSolo;
 
-	private Instant recHorario;
+	private Double resQtdRaiz;
 	
-	private Integer recFormaPagamento;
+	private Double resQtdOvos;
 	
-	private Integer recAmostra;
+	private Integer resNematoide;
 	
-	
+	private Integer resAmostra;
+
 }

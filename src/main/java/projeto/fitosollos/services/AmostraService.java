@@ -56,39 +56,39 @@ public class AmostraService {
 		
 		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
 		
-		amostra.setId(id);
+		amostra.setAmoId(id);
 		repository.save(amostra);
 	}
 	
 	//utilitarios
 	public Amostra fromDTO(AmostraNewDTO amostraNewDTO) {
-		Usuario usuario = new Usuario(amostraNewDTO.getUsuario(), null, null);
-		TipoAnalise tipoAnalise = new TipoAnalise(amostraNewDTO.getAnalise(), null);
-		Cultura cultura = new Cultura(amostraNewDTO.getCultura(), null);
-		Proprietario proprietario = new Proprietario(amostraNewDTO.getProprietario(), null, null, null, null, null, 
+		Usuario usuario = new Usuario(amostraNewDTO.getAmoUsuario(), null, null);
+		TipoAnalise tipoAnalise = new TipoAnalise(amostraNewDTO.getAmoAnalise(), null);
+		Cultura cultura = new Cultura(amostraNewDTO.getAmoCultura(), null);
+		Proprietario proprietario = new Proprietario(amostraNewDTO.getAmoProprietario(), null, null, null, null, null, 
 				null, null, null, null);
-		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraNewDTO.getTecnico(), null, null, null, 
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraNewDTO.getAmoTecnico(), null, null, null, 
 				null, null, null, null, null, null, null);
-		Laboratorio laboratorio = new Laboratorio(amostraNewDTO.getLaboratorio(), null, null, null);
-		Amostra amostra = new Amostra(null, amostraNewDTO.getDescricao(), amostraNewDTO.getChegada(), 
-				amostraNewDTO.getSaida(), amostraNewDTO.getPeso(), amostraNewDTO.getFinalizada(), 
-				amostraNewDTO.getCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, 
+		Laboratorio laboratorio = new Laboratorio(amostraNewDTO.getAmoLaboratorio(), null, null, null, null, null);
+		Amostra amostra = new Amostra(null, amostraNewDTO.getAmoDescricao(), amostraNewDTO.getAmoChegada(), 
+				amostraNewDTO.getAmoSaida(), amostraNewDTO.getAmoPeso(), amostraNewDTO.getAmoFinalizada(), 
+				amostraNewDTO.getAmoCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, 
 				laboratorio);
 		return amostra;
 	}
 	
 	public Amostra fromDTO(AmostraDTO amostraDTO) {
-		Usuario usuario = new Usuario(amostraDTO.getUsuario(), null, null);
-		TipoAnalise tipoAnalise = new TipoAnalise(amostraDTO.getAnalise(), null);
-		Cultura cultura = new Cultura(amostraDTO.getCultura(), null);
-		Proprietario proprietario = new Proprietario(amostraDTO.getProprietario(), null, null, null, null, null, 
+		Usuario usuario = new Usuario(amostraDTO.getAmoUsuario(), null, null);
+		TipoAnalise tipoAnalise = new TipoAnalise(amostraDTO.getAmoAnalise(), null);
+		Cultura cultura = new Cultura(amostraDTO.getAmoCultura(), null);
+		Proprietario proprietario = new Proprietario(amostraDTO.getAmoProprietario(), null, null, null, null, null, 
 				null, null, null, null);
-		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraDTO.getTecnico(), null, null, null, 
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(amostraDTO.getAmoTecnico(), null, null, null, 
 				null, null, null, null, null, null, null);
-		Laboratorio laboratorio = new Laboratorio(amostraDTO.getLaboratorio(), null, null, null);
-		Amostra amostra = new Amostra(null, amostraDTO.getDescricao(), amostraDTO.getChegada(), 
-				amostraDTO.getSaida(), amostraDTO.getPeso(), amostraDTO.getFinalizada(), 
-				amostraDTO.getCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, laboratorio);
+		Laboratorio laboratorio = new Laboratorio(amostraDTO.getAmoLaboratorio(), null, null, null, null, null);
+		Amostra amostra = new Amostra(null, amostraDTO.getAmoDescricao(), amostraDTO.getAmoChegada(), 
+				amostraDTO.getAmoSaida(), amostraDTO.getAmoPeso(), amostraDTO.getAmoFinalizada(), 
+				amostraDTO.getAmoCancelada(), usuario, tipoAnalise, cultura, proprietario, responsavelTecnico, laboratorio);
 	
 		return amostra;
 	}

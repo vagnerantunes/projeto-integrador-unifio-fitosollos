@@ -43,7 +43,7 @@ public class CrqService {
 	}
 
 	private void updateData(Crq entity, Crq obj) {
-		entity.setDescricao(obj.getDescricao());
+		entity.setCrqDescricao(obj.getCrqDescricao());
 	}
 	
 }

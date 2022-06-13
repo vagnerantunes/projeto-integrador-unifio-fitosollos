@@ -3,6 +3,7 @@ package projeto.fitosollos.dto;
 import java.io.Serializable;
 import java.time.Instant;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,30 +15,30 @@ public class AmostraDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Integer amoId;
 
-	private String descricao;
+	private String amoDescricao;
 
-	private Instant chegada;
+	private Instant amoChegada;
+	
+	private Instant amoSaida;
 
-	private Instant saida;
+	private Double amoPeso;
 
-	private Double peso;
-
-	private String finalizada;
+	private String amoFinalizada;
 	
-	private String cancelada;
+	private String amoCancelada;
 	
-	private Integer usuario;
+	private Integer amoUsuario;
 	
-	private Integer analise;
+	private Integer amoAnalise;
 	
-	private Integer cultura;
+	private Integer amoCultura;
 	
-	private Integer proprietario;
+	private Integer amoProprietario;
 	
-	private Integer tecnico;
+	private Integer amoTecnico;
 	
-	private Integer laboratorio;
+	private Integer amoLaboratorio;
 
 }

@@ -53,26 +53,26 @@ public class RecebimentoService {
 		
 		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
 		
-		recebimento.setId(id);
+		recebimento.setRecId(id);
 		repository.save(recebimento);
 	}
 	
 	//utilitarios
 	public Recebimento fromDTO(RecebimentoNewDTO recebimentoNewDTO) {
-		Amostra amostra = new Amostra(recebimentoNewDTO.getAmostra(), null, null, null, null, null, null, null, null, 
+		Amostra amostra = new Amostra(recebimentoNewDTO.getRecAmostra(), null, null, null, null, null, null, null, null, 
 				null, null, null, null);
-		FormaPagamento formaPagamento = new FormaPagamento(recebimentoNewDTO.getFormaPagamento(), null);
-		Recebimento recebimento = new Recebimento(null, recebimentoNewDTO.getValor(), recebimentoNewDTO.getHorario(), 
+		FormaPagamento formaPagamento = new FormaPagamento(recebimentoNewDTO.getRecFormaPagamento(), null);
+		Recebimento recebimento = new Recebimento(null, recebimentoNewDTO.getRecValor(), recebimentoNewDTO.getRecHorario(), 
 				formaPagamento, amostra);
 		
 		return recebimento;
 	}
 	
 	public Recebimento fromDTO(RecebimentoDTO recebimentoDTO) {
-		Amostra amostra = new Amostra(recebimentoDTO.getAmostra(), null, null, null, null, null, null, null, null, 
+		Amostra amostra = new Amostra(recebimentoDTO.getRecAmostra(), null, null, null, null, null, null, null, null, 
 				null, null, null, null);
-		FormaPagamento formaPagamento = new FormaPagamento(recebimentoDTO.getFormaPagamento(), null);
-		Recebimento recebimento = new Recebimento(null, recebimentoDTO.getValor(), recebimentoDTO.getHorario(), 
+		FormaPagamento formaPagamento = new FormaPagamento(recebimentoDTO.getRecFormaPagamento(), null);
+		Recebimento recebimento = new Recebimento(null, recebimentoDTO.getRecValor(), recebimentoDTO.getRecHorario(), 
 				formaPagamento, amostra);
 		
 		return recebimento;

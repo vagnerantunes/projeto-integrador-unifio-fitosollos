@@ -44,15 +44,15 @@ public class ProprietarioService {
 	}
 
 	private void updateData(Proprietario entity, Proprietario obj) {
-		entity.setNome(obj.getNome());
-		entity.setCpfcnpj(obj.getCpfcnpj());
-		entity.setDdd(obj.getDdd());
-		entity.setTelefone(obj.getTelefone());
-		entity.setCidade(obj.getCidade());
-		entity.setUf(obj.getUf());
-		entity.setEndereco(obj.getEndereco());
-		entity.setBairro(obj.getBairro());
-		entity.setCep(obj.getCep());
+		entity.setProNome(obj.getProNome());
+		entity.setProCpfCnpj(obj.getProCpfCnpj());
+		entity.setProDdd(obj.getProDdd());
+		entity.setProTelefone(obj.getProTelefone());
+		entity.setProCidade(obj.getProCidade());
+		entity.setProUf(obj.getProUf());
+		entity.setProEndereco(obj.getProEndereco());
+		entity.setProBairro(obj.getProBairro());
+		entity.setProCep(obj.getProCep());
 		
 	}	
 	

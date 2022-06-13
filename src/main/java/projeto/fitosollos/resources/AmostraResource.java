@@ -49,7 +49,7 @@ public class AmostraResource {
 		Amostra amostra = service.insert(amostraNewDTO);
 		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(amostra.getId()).toUri(); 
+				.path("/{id}").buildAndExpand(amostra.getAmoId()).toUri(); 
 		
 		return ResponseEntity.created(uri).build();
 	}

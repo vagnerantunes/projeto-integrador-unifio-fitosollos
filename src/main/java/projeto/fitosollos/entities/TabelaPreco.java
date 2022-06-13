@@ -2,12 +2,14 @@ package projeto.fitosollos.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -27,16 +29,21 @@ public class TabelaPreco implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(length = 11, name = "TAB_ID")
+	private Integer tabId;
 
-	private Double valor;
+	@NotNull
+	@Column(name = "TAB_VALOR")
+	private Double tabValor;
 	
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "analise")
-	private TipoAnalise analise;
+	@JoinColumn(name = "TAB_TIP_ID")
+	private TipoAnalise tabAnalise;
 	
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "laboratorio")
-	private Laboratorio laboratorio;
+	@JoinColumn(name = "TAB_LAB_ID")
+	private Laboratorio tabLaboratorio;
 
 }

@@ -50,7 +50,7 @@ public class TabelaPrecoResource {
 		
 		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(tabelaPreco.getId()).toUri(); 
+				.path("/{id}").buildAndExpand(tabelaPreco.getTabId()).toUri(); 
 		
 		return ResponseEntity.created(uri).build();
 	}
@@ -65,7 +65,6 @@ public class TabelaPrecoResource {
 	public ResponseEntity<Void> delete(@PathVariable Integer id){
 		service.delete(id);
 		return ResponseEntity.ok().build();
-		
 	}
 
 }

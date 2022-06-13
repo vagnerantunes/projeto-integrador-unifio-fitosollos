@@ -44,7 +44,7 @@ public class TipoAnaliseService {
 	}
 
 	private void updateData(TipoAnalise entity, TipoAnalise obj) {
-		entity.setDescricao(obj.getDescricao());
+		entity.setTipDescricao(obj.getTipDescricao());
 	}	
 	
 }

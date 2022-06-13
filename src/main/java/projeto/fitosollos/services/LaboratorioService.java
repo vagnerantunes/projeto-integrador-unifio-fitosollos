@@ -44,9 +44,11 @@ public class LaboratorioService {
 	}
 
 	private void updateData(Laboratorio entity, Laboratorio obj) {
-		entity.setCnpj(obj.getCnpj());
-		entity.setEndereco(obj.getEndereco());
-		entity.setTelefone(obj.getTelefone());
+		entity.setLabRazaoSocial(obj.getLabRazaoSocial());
+		entity.setLabNomeFantasia(obj.getLabNomeFantasia());
+		entity.setLabCnpj(obj.getLabCnpj());
+		entity.setLabEndereco(obj.getLabEndereco());
+		entity.setLabTelefone(obj.getLabTelefone());
 	}	
 	
 }

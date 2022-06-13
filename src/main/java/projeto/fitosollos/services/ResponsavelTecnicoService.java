@@ -52,30 +52,30 @@ public class ResponsavelTecnicoService {
 		
 		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
 		
-		responsavelTecnico.setId(id);
+		responsavelTecnico.setTecId(id);
 		repository.save(responsavelTecnico);
 	}
 	
 	//utilitarios
 	public ResponsavelTecnico fromDTO(ResponsavelTecnicoNewDTO responsavelTecnicoNewDTO) {
-		Crq crq = new Crq(responsavelTecnicoNewDTO.getCrq(), null);
-		Laboratorio laboratorio = new Laboratorio(responsavelTecnicoNewDTO.getLaboratorio(), null, null, null);
-		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(null, responsavelTecnicoNewDTO.getNome(), 
-				responsavelTecnicoNewDTO.getDdd(), responsavelTecnicoNewDTO.getTelefone(), 
-				responsavelTecnicoNewDTO.getCidade(), responsavelTecnicoNewDTO.getUf(), 
-				responsavelTecnicoNewDTO.getEndereco(), responsavelTecnicoNewDTO.getBairro(), 
-				responsavelTecnicoNewDTO.getCep(), crq, laboratorio);
+		Crq crq = new Crq(responsavelTecnicoNewDTO.getTecCrq(), null);
+		Laboratorio laboratorio = new Laboratorio(responsavelTecnicoNewDTO.getTecLaboratorio(), null, null, null, null, null);
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(null, responsavelTecnicoNewDTO.getTecNome(), 
+				responsavelTecnicoNewDTO.getTecDdd(), responsavelTecnicoNewDTO.getTecTelefone(), 
+				responsavelTecnicoNewDTO.getTecCidade(), responsavelTecnicoNewDTO.getTecUf(), 
+				responsavelTecnicoNewDTO.getTecEndereco(), responsavelTecnicoNewDTO.getTecBairro(), 
+				responsavelTecnicoNewDTO.getTecCep(), crq, laboratorio);
 		return responsavelTecnico;
 	}
 	
 	public ResponsavelTecnico fromDTO(ResponsavelTecnicoDTO responsavelTecnicoDTO) {
-		Crq crq = new Crq(responsavelTecnicoDTO.getCrq(), null);
-		Laboratorio laboratorio = new Laboratorio(responsavelTecnicoDTO.getLaboratorio(), null, null, null);
-		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(null, responsavelTecnicoDTO.getNome(), 
-				responsavelTecnicoDTO.getDdd(), responsavelTecnicoDTO.getTelefone(), 
-				responsavelTecnicoDTO.getCidade(), responsavelTecnicoDTO.getUf(), 
-				responsavelTecnicoDTO.getEndereco(), responsavelTecnicoDTO.getBairro(), 
-				responsavelTecnicoDTO.getCep(), crq, laboratorio);
+		Crq crq = new Crq(responsavelTecnicoDTO.getTecCrq(), null);
+		Laboratorio laboratorio = new Laboratorio(responsavelTecnicoDTO.getTecLaboratorio(), null, null, null, null, null);
+		ResponsavelTecnico responsavelTecnico = new ResponsavelTecnico(null, responsavelTecnicoDTO.getTecNome(), 
+				responsavelTecnicoDTO.getTecDdd(), responsavelTecnicoDTO.getTecTelefone(), 
+				responsavelTecnicoDTO.getTecCidade(), responsavelTecnicoDTO.getTecUf(), 
+				responsavelTecnicoDTO.getTecEndereco(), responsavelTecnicoDTO.getTecBairro(), 
+				responsavelTecnicoDTO.getTecCep(), crq, laboratorio);
 		return responsavelTecnico;
 	}
 

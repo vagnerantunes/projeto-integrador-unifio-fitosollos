@@ -3,12 +3,14 @@ package projeto.fitosollos.entities;
 import java.io.Serializable;
 import java.time.Instant;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -28,18 +30,25 @@ public class Recebimento implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	@Column(length = 11, name = "REC_ID")
+	private Integer recId;
 
-	private Double valor;
+	@NotNull
+	@Column(name = "REC_VALOR")
+	private Double recValor;
 
-	private Instant horario;
-
-	@ManyToOne
-	@JoinColumn(name = "pagamento")
-	private FormaPagamento formaPagamento;
+	@NotNull
+	@Column(name = "REC_HORARIO")
+	private Instant recHorario;
 	
+	@NotNull
 	@ManyToOne
-	@JoinColumn(name = "amostra")
-	private Amostra amostra;
+	@JoinColumn(name = "REC_FPG_ID")
+	private FormaPagamento recFormaPagamento;
+	
+	@NotNull
+	@ManyToOne
+	@JoinColumn(name = "REC_AMO_ID")
+	private Amostra recAmostra;
 	
 }

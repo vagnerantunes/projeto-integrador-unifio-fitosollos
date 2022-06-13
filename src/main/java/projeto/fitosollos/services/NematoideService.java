@@ -43,7 +43,7 @@ public class NematoideService {
 	}
 
 	private void updateData(Nematoide entity, Nematoide obj) {
-		entity.setDescricao(obj.getDescricao());
+		entity.setNemDescricao(obj.getNemDescricao());
 	}
 	
 }

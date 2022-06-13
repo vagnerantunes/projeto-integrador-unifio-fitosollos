@@ -2,10 +2,12 @@ package projeto.fitosollos.entities;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -25,7 +27,11 @@ public class FormaPagamento implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
-	private String descricao;
+	@Column(length = 11, name = "FPG_ID")
+	private Integer fpgId;
+	
+	@NotNull
+	@Column(length = 45, name = "FPG_DESCRICAO")
+	private String fpgDescricao;
 	
 }

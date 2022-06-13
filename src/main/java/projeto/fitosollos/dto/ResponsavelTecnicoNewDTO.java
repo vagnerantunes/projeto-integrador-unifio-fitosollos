@@ -15,24 +15,24 @@ public class ResponsavelTecnicoNewDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private String nome;
+	private String tecNome;
 
-	private String ddd;
+	private String tecDdd;
 
-	private String telefone;
+	private String tecTelefone;
 
-	private String cidade;
+	private String tecCidade;
 
-	private String uf;
+	private String tecUf;
 	
-	private String endereco;
+	private String tecEndereco;
 	
-	private String bairro;
+	private String tecBairro;
 	
-	private String cep;
+	private String tecCep;
 
-	private Integer crq;
+	private Integer tecCrq;
 	
-	private Integer laboratorio;
+	private Integer tecLaboratorio;
 
 }

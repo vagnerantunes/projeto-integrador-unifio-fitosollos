@@ -44,7 +44,7 @@ public class FormaPagamentoService {
 	}
 
 	private void updateData(FormaPagamento entity, FormaPagamento obj) {
-		entity.setDescricao(obj.getDescricao());
+		entity.setFpgDescricao(obj.getFpgDescricao());
 	}	
 	
 }

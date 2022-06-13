@@ -2,6 +2,7 @@ package projeto.fitosollos.dto;
 
 import java.io.Serializable;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,12 +14,11 @@ public class TabelaPrecoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
+	private Integer tabId;
 
-	private Double valor;
+	private Double tabValor;
 	
-	private Integer analise;
+	private Integer tabAnalise;
 	
-	private Integer laboratorio;
-
+	private Integer tabLaboratorio;
 }

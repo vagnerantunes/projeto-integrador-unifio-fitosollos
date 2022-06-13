@@ -2,6 +2,7 @@ package projeto.fitosollos.dto;
 
 import java.io.Serializable;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,26 +14,25 @@ public class ResponsavelTecnicoDTO implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	private Integer id;
-
-	private String nome;
+	private Integer tecId;
 	
-	private String ddd;
+	private String tecNome;
 
-	private String telefone;
+	private String tecDdd;
 
-	private String cidade;
+	private String tecTelefone;
 
-	private String uf;
+	private String tecCidade;
+
+	private String tecUf;
 	
-	private String endereco;
+	private String tecEndereco;
 	
-	private String bairro;
+	private String tecBairro;
 	
-	private String cep;
+	private String tecCep;
 
-	private Integer crq;
+	private Integer tecCrq;
 	
-	private Integer laboratorio;
-
+	private Integer tecLaboratorio;
 }

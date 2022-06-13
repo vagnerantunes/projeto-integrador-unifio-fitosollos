@@ -44,7 +44,7 @@ public class CulturaService {
 	}
 
 	private void updateData(Cultura entity, Cultura obj) {
-		entity.setDescricao(obj.getDescricao());
+		entity.setCulDecricao(obj.getCulDecricao());
 		
 	}	
 	

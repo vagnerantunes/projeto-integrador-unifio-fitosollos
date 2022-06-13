@@ -17,7 +17,6 @@ public class UsuarioService {
 	
 	public List<Usuario> findAll(){
 		return repository.findAll();
-		
 	}
 	
 	public Usuario findById(Integer id) {
@@ -43,7 +42,7 @@ public class UsuarioService {
 	}
 	
 	private void updateData(Usuario entity, Usuario obj) {
-		entity.setEmail(obj.getEmail());
-		entity.setSenha(obj.getSenha());		
+		entity.setUsuEmail(obj.getUsuEmail());
+		entity.setUsuSenha(obj.getUsuSenha());		
 	}	
 }

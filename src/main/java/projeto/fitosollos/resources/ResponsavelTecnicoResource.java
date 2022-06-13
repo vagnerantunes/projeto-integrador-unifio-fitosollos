@@ -48,7 +48,7 @@ public class ResponsavelTecnicoResource {
 		ResponsavelTecnico responsavelTecnico = service.insert(responsavelTecnicoNewDTO);
 		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(responsavelTecnico.getId()).toUri(); 
+				.path("/{id}").buildAndExpand(responsavelTecnico.getTecId()).toUri(); 
 		return ResponseEntity.created(uri).build();
 	}
 	
