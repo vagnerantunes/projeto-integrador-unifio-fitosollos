@@ -12,7 +12,7 @@ import projeto.fitosollos.dto.ResultadoAnaliseDTO;
 import projeto.fitosollos.dto.ResultadoAnaliseNewDTO;
 import projeto.fitosollos.entities.Amostra;
 import projeto.fitosollos.entities.Nematoide;
-import projeto.fitosollos.entities.ResultadoAnalise;
+import projeto.fitosollos.entities.Venda;
 import projeto.fitosollos.repositories.ResultadoAnaliseRepository;
 
 @Service
@@ -22,25 +22,25 @@ public class ResultadoAnaliseService {
 	private ResultadoAnaliseRepository repository;
 
 	//listar todos
-	public List<ResultadoAnalise> findAll() {
+	public List<Venda> findAll() {
 		return repository.findAll();
 	}
 
 	//listar por id
-	public ResultadoAnalise findById(Integer id) {
-		Optional<ResultadoAnalise> obj = repository.findById(id);
+	public Venda findById(Integer id) {
+		Optional<Venda> obj = repository.findById(id);
 		return obj.get();
 	}
 	
-	public ResultadoAnalise insert (ResultadoAnaliseNewDTO resultadoAnaliseNewDTO) {
-		ResultadoAnalise resultadoAnalise = fromDTO(resultadoAnaliseNewDTO);
+	public Venda insert (ResultadoAnaliseNewDTO resultadoAnaliseNewDTO) {
+		Venda resultadoAnalise = fromDTO(resultadoAnaliseNewDTO);
 		repository.save(resultadoAnalise);
 		return resultadoAnalise;
 	}
 	
 	
 	public void delete(Integer id) {
-		Optional<ResultadoAnalise> opt = repository.findById(id);
+		Optional<Venda> opt = repository.findById(id);
 		
 		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
 		
@@ -49,8 +49,8 @@ public class ResultadoAnaliseService {
 	
 	
 	public void update (Integer id, ResultadoAnaliseDTO resultadoAnaliseDTO) {
-		ResultadoAnalise resultadoAnalise = fromDTO(resultadoAnaliseDTO);
-		Optional<ResultadoAnalise> opt = repository.findById(id);
+		Venda resultadoAnalise = fromDTO(resultadoAnaliseDTO);
+		Optional<Venda> opt = repository.findById(id);
 		
 		opt.orElseThrow(() -> new EntityNotFoundException("Funcionario não encontrado!, ID: " + id));
 		
@@ -59,19 +59,19 @@ public class ResultadoAnaliseService {
 	}
 	
 	//utilitarios
-	public ResultadoAnalise fromDTO(ResultadoAnaliseNewDTO resultadoAnaliseNewDTO) {
+	public Venda fromDTO(ResultadoAnaliseNewDTO resultadoAnaliseNewDTO) {
 		Nematoide nematoide = new Nematoide(resultadoAnaliseNewDTO.getResNematoide(), null);
 		Amostra amostra = new Amostra(resultadoAnaliseNewDTO.getResAmostra(), null, null, null, null, null, null, null, null, null, null, null, null);
-		ResultadoAnalise resultadoAnalise = new ResultadoAnalise(null, resultadoAnaliseNewDTO.getResQtdSolo(), 
+		Venda resultadoAnalise = new Venda(null, resultadoAnaliseNewDTO.getResQtdSolo(), 
 				resultadoAnaliseNewDTO.getResQtdRaiz(), resultadoAnaliseNewDTO.getResQtdOvos(), nematoide, amostra);
 		
 		return resultadoAnalise;
 	}
 	
-	public ResultadoAnalise fromDTO(ResultadoAnaliseDTO resultadoAnaliseDTO) {
+	public Venda fromDTO(ResultadoAnaliseDTO resultadoAnaliseDTO) {
 		Nematoide nematoide = new Nematoide(resultadoAnaliseDTO.getResNematoide(), null);
 		Amostra amostra = new Amostra(resultadoAnaliseDTO.getResAmostra(), null, null, null, null, null, null, null, null, null, null, null, null);
-		ResultadoAnalise resultadoAnalise = new ResultadoAnalise(null, resultadoAnaliseDTO.getResQtdSolo(), 
+		Venda resultadoAnalise = new Venda(null, resultadoAnaliseDTO.getResQtdSolo(), 
 				resultadoAnaliseDTO.getResQtdRaiz(), resultadoAnaliseDTO.getResQtdOvos(), nematoide, amostra);
 		
 		return resultadoAnalise;

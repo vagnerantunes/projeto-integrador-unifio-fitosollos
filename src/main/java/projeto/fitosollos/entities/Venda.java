@@ -23,7 +23,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class ResultadoAnalise implements Serializable {
+public class Venda implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 

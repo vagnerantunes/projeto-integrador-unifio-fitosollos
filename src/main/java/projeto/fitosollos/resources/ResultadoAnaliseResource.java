@@ -20,7 +20,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import projeto.fitosollos.dto.ResultadoAnaliseDTO;
 import projeto.fitosollos.dto.ResultadoAnaliseNewDTO;
-import projeto.fitosollos.entities.ResultadoAnalise;
+import projeto.fitosollos.entities.Venda;
 import projeto.fitosollos.services.ResultadoAnaliseService;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -32,21 +32,21 @@ public class ResultadoAnaliseResource {
 	private ResultadoAnaliseService service;
 	
 	@GetMapping
-	public ResponseEntity<List<ResultadoAnalise>> findAll(){
-		List<ResultadoAnalise> list = service.findAll();
+	public ResponseEntity<List<Venda>> findAll(){
+		List<Venda> list = service.findAll();
 		return ResponseEntity.ok().body(list);		
 	}
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<ResultadoAnalise> findById(@PathVariable Integer id){
-		ResultadoAnalise obj = service.findById(id);
+	public ResponseEntity<Venda> findById(@PathVariable Integer id){
+		Venda obj = service.findById(id);
 		return ResponseEntity.ok().body(obj);
 		
 	}
 	
 	@PostMapping
 	public ResponseEntity<Void> save (@RequestBody @Valid ResultadoAnaliseNewDTO resultadoAnaliseNewDTO){
-		ResultadoAnalise resultadoAnalise = service.insert(resultadoAnaliseNewDTO);
+		Venda resultadoAnalise = service.insert(resultadoAnaliseNewDTO);
 		
 		//boas praticas, ao inserir um recurso retornar sua URI (endereco) onde foi inserido
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
